@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:otus_food/models/recipe.dart';
 import 'package:otus_food/widgets/recipe_list.dart';
 
 class HomePage extends StatefulWidget {
