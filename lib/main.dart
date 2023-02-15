@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:otus_food/widgets/home_page.dart';
+import 'package:otus_food/screens/home_screen.dart';
 import 'package:otus_food/theme_data.dart';
 
 void main() {

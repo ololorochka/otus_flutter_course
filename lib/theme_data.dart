@@ -31,6 +31,7 @@ class FoodTheme {
         headline4: const TextStyle(fontSize: 16.0, color: _mainColor, fontWeight: FontWeight.w500),
         headline5: const TextStyle(fontSize: 14.0, color: _textColor, fontWeight: FontWeight.w500),
         headline6: TextStyle(fontSize: 13.0, color: theme.colorScheme.neutralColor4, fontWeight: FontWeight.w400),
+        bodyText1: const TextStyle(fontSize: 13.0, color: _mainColor, fontWeight: FontWeight.w400),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: _canvasColor,
@@ -49,6 +50,18 @@ class FoodTheme {
           ),
         ),
       ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: ButtonStyle(
+          fixedSize: MaterialStateProperty.all(const Size(232, 48)),
+          textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)),
+          side: MaterialStateProperty.all(const BorderSide(color: _mainColor, width: 4)),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+        ),
+      ),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
           textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)),
@@ -59,6 +72,7 @@ class FoodTheme {
 }
 
 extension FoodColorScheme on ColorScheme {
+  Color get canvasColor => Colors.white;
   Color get neutralColor => const Color(0xFFECECEC);
   Color get neutralColor1 => const Color(0xFFF0EEEE);
   Color get neutralColor2 => const Color(0xFFCCCCCC);

@@ -98,8 +98,7 @@ class _CommentWidget extends State<CommentWidget> {
                   key: _formKey,
                   child: TextFormField(
                     controller: _controller,
-                    minLines: 2,
-                    maxLines: 10,
+                    textInputAction: TextInputAction.send,
                     textAlignVertical: TextAlignVertical.top,
                     style: Theme.of(context).textTheme.headline1,
                     decoration: InputDecoration(
@@ -116,12 +115,11 @@ class _CommentWidget extends State<CommentWidget> {
                       }
                       return null;
                     },
+                    onFieldSubmitted: (_) {
+                      _addComment();
+                    },
                   ),
                 ),
-              ),
-              TextButton(
-                onPressed: _addComment,
-                child: const Text('Отправить'),
               ),
             ],
       ),
@@ -146,6 +144,7 @@ class _CommentWidget extends State<CommentWidget> {
         commentList.add(comment);
         _controller.clear();
       });
+      FocusScope.of(context).unfocus();
     }
   }
 }

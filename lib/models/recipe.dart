@@ -4,7 +4,7 @@ import 'package:otus_food/models/comment.dart';
 class Recipe {
   int? recipeId;
   String title;
-  String cookingTime;
+  int cookingTime;
   String image;
   bool favorite = false; // Временное решение
   List<Map<String, String>> ingredients;
@@ -53,7 +53,7 @@ List<Map<String, dynamic>> testRecipeData = [
   {
     'recipe_id': 111,
     'title': 'Медовые крылышки в духовке',
-    'cooking_time': '1 ч 50 мин',
+    'cooking_time': 6600,
     'image': 'assets/images/111.jpg',
     'ingredients': [
       {'name': 'Куриные крылышки', 'quantity': '2 кг'},
@@ -130,7 +130,7 @@ List<Map<String, dynamic>> testRecipeData = [
   {
     'recipe_id': 112,
     'title': 'Курица с чесноком на сковороде жареная',
-    'cooking_time': '40 мин',
+    'cooking_time': 2400,
     'image': 'assets/images/112.jpg',
     'ingredients': [
       {'name': 'Курица', 'quantity': '1 шт'},
@@ -200,7 +200,7 @@ List<Map<String, dynamic>> testRecipeData = [
   {
     'recipe_id': 113,
     'title': 'Котлеты из фарша в духовке с подливкой',
-    'cooking_time': '1 ч',
+    'cooking_time': 3600,
     'image': 'assets/images/113.jpg',
     'ingredients': [
       {'name': 'Фарш мясной', 'quantity': '400 гр'},
@@ -344,7 +344,7 @@ List<Map<String, dynamic>> testRecipeData = [
   {
     'recipe_id': 114,
     'title': 'Грибы шампиньоны на гриле',
-    'cooking_time': '2 ч',
+    'cooking_time': 7200,
     'image': 'assets/images/114.jpg',
     'ingredients': [
       {'name': 'Шампиньоны', 'quantity': '400 гр'},
@@ -407,7 +407,7 @@ List<Map<String, dynamic>> testRecipeData = [
   {
     'recipe_id': 115,
     'title': 'Овощи запеченные в рукаве в духовке',
-    'cooking_time': '45 мин',
+    'cooking_time': 2700,
     'image': 'assets/images/115.jpg',
     'ingredients': [
       {'name': 'Картошка (средняя)', 'quantity': '1 шт'},
@@ -497,7 +497,7 @@ List<Map<String, dynamic>> testRecipeData = [
   {
     'recipe_id': 116,
     'title': 'Киш с семгой и брокколи',
-    'cooking_time': '2 ч',
+    'cooking_time': 7200,
     'image': 'assets/images/116.jpg',
     'ingredients': [
       {'name': '', 'quantity': ''},
@@ -627,7 +627,7 @@ List<Map<String, dynamic>> testRecipeData = [
   {
     'recipe_id': 117,
     'title': 'Фаршированные перцы с рисом и овощами в духовке',
-    'cooking_time': '1 ч',
+    'cooking_time': 3600,
     'image': 'assets/images/117.jpg',
     'ingredients': [
       {'name': 'Болгарский перец', 'quantity': '8 шт'},
@@ -728,7 +728,7 @@ List<Map<String, dynamic>> testRecipeData = [
   {
     'recipe_id': 118,
     'title': 'Карп фаршированный запеченный в духовке целиком',
-    'cooking_time': '1 ч 30 мин',
+    'cooking_time': 5400,
     'image': 'assets/images/118.jpg',
     'ingredients': [
       {'name': 'Карп', 'quantity': '1500 гр'},
@@ -812,7 +812,7 @@ List<Map<String, dynamic>> testRecipeData = [
   {
     'recipe_id': 119,
     'title': 'Борщ с пекинской капустой',
-    'cooking_time': '40 мин',
+    'cooking_time': 2400,
     'image': 'assets/images/119.jpg',
     'ingredients': [
       {'name': 'Картошка', 'quantity': '4 шт'},
