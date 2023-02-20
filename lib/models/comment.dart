@@ -1,4 +1,4 @@
-import 'package:otus_food/common.dart';
+import 'package:otus_food/common.dart' as com;
 import 'package:otus_food/models/recipe.dart';
 
 // Комментарий
@@ -26,7 +26,7 @@ class Comment {
 
   // Пока нам некуда сохранять
   void save() {
-    date ??= getDateNow();
+    date ??= com.getDateNow();
   }
 }
 
