@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:otus_food/common.dart' as com;
 import 'package:otus_food/models/recipe.dart';
@@ -6,6 +7,7 @@ import 'package:otus_food/widgets/recipe/comments.dart';
 import 'package:otus_food/widgets/recipe/favorite_button.dart';
 import 'package:otus_food/widgets/recipe/step_checkbox.dart';
 import 'package:otus_food/widgets/recipe/timer.dart';
+import 'package:otus_food/settings.dart';
 
 // Виджет рецепта
 class RecipeWidget extends StatefulWidget {
@@ -84,10 +86,9 @@ class _RecipeWidgetState extends State<RecipeWidget> {
                     const SizedBox(height: 20),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        widget.obj.image,
-                        // width: 149,
-                        // height: 136,
+                      child: CachedNetworkImage(
+                        imageUrl: Settings.apiUrl + widget.obj.image,
+                        errorWidget: (context, url, error) => const SizedBox(),
                         fit: BoxFit.cover,
                       ),
                     ),

@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:otus_food/models/comment.dart';
 import 'package:otus_food/models/recipe.dart';
 import 'package:otus_food/theme_data.dart';
+import 'package:otus_food/settings.dart';
 
 // Виджет комментариев
 class CommentWidget extends StatefulWidget {
@@ -54,7 +56,7 @@ class _CommentWidget extends State<CommentWidget> {
                                   color: Theme.of(context).colorScheme.neutralColor2,
                                 )
                               : CircleAvatar(
-                                  backgroundImage: AssetImage(comment.userPic!),
+                                  backgroundImage: CachedNetworkImageProvider(Settings.apiUrl + comment.userPic!),
                                   backgroundColor: Theme.of(context).colorScheme.primary,
                                   radius: 27,
                                 ),
@@ -135,11 +137,11 @@ class _CommentWidget extends State<CommentWidget> {
         ),
       );
 
-  // Пока так / можно выделить в отдельный контроллер
+  // Добавление комментария
   _addComment() {
     if (_formKey.currentState!.validate()) {
       setState(() {
-        Comment comment = Comment(recipeId: widget.obj.recipeId!, text: _controller.value.text);
+        Comment comment = Comment(recipeId: widget.obj.recipeId, text: _controller.value.text);
         comment.save();
         commentList.add(comment);
         _controller.clear();
