@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:otus_food/common.dart' as com;
+import 'package:otus_food/settings.dart';
 import 'package:otus_food/models/recipe.dart';
 import 'package:otus_food/screens/recipe_screen.dart';
+import 'package:otus_food/theme_data.dart';
 
 // Виджет элемента списка рецептов
 class RecipeItemWidget extends StatelessWidget {
@@ -22,8 +25,9 @@ class RecipeItemWidget extends StatelessWidget {
                 topLeft: Radius.circular(4.0),
                 bottomLeft: Radius.circular(4.0),
               ),
-              child: Image.asset(
-                item.image,
+              child: CachedNetworkImage(
+                imageUrl: Settings.apiUrl + item.image,
+                errorWidget: (context, url, error) => noPhoto(context),
                 width: 149,
                 height: 136,
                 fit: BoxFit.cover,
@@ -69,6 +73,18 @@ class RecipeItemWidget extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Widget noPhoto(BuildContext context) {
+    return SizedBox(
+      width: 149,
+      height: 136,
+      child: Icon(
+        Icons.photo_camera,
+        size: 90,
+        color: Theme.of(context).colorScheme.neutralColor2,
+      ),
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:otus_food/theme_data.dart';
 
 // Виджет чекбокса шагов приготовления
 class StepCheckbox extends StatefulWidget {
