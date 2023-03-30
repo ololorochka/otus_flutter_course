@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:otus_food/models/recipe.dart';
 import 'package:otus_food/controllers/recipe_list_controller.dart';
@@ -14,25 +13,17 @@ class RecipeListWidget extends StatefulWidget {
 }
 
 class _RecipeListWidgetState extends State<RecipeListWidget> {
-  late final Dio dio;
   Future<List<Recipe>>? recipes;
-
-  @override
-  void initState() {
-    super.initState();
-    dio = Dio();
-  }
 
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
-    recipes = RecipeListController.loadRecipeList(dio);
+    recipes = RecipeListController.loadRecipeList();
   }
 
   @override
   void dispose() {
     super.dispose();
-    dio.close();
   }
 
   @override

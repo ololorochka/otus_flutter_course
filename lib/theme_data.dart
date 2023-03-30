@@ -79,5 +79,7 @@ extension FoodColorScheme on ColorScheme {
   Color get neutralColor3 => const Color(0xFFC2C2C2);
   Color get neutralColor4 => const Color(0xFF797676);
   Color get neutralColor5 => const Color(0xFF4D4D4D);
-  Color get favoriteColor => const Color(0xFFE54D3C);
+  Color get neutralColor6 => const Color(0xFF1B1B1B);
+  Color get textColor => Colors.black;
+  Color get notableColor => const Color(0xFFE54D3C);
 }

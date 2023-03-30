@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:otus_food/models/comment_adapter.dart';
@@ -9,8 +10,15 @@ import 'package:otus_food/settings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Settings().appDir = await getApplicationDocumentsDirectory();
+
+  final imageDir = Directory(Settings().imageDir!);
+  if (!(await imageDir.exists())) {
+    await imageDir.create();
+  }
+
   Hive
-    ..init((await getApplicationDocumentsDirectory()).path)
+    ..init(Settings().appDir!.path)
     ..registerAdapter(RecipeAdapter())
     ..registerAdapter(CommentAdapter());
 

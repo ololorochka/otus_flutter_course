@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:otus_food/common.dart' as com;
+import 'package:otus_food/controllers/routes.dart';
 import 'package:otus_food/settings.dart';
 import 'package:otus_food/models/recipe.dart';
 import 'package:otus_food/screens/recipe_screen.dart';
@@ -66,12 +67,7 @@ class RecipeItemWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => RecipeWidget(item),
-          ),
-        );
+        Navigator.of(context).push(AppRoutes.slideFadeRoute(RecipeWidget(item)));
       },
     );
   }
