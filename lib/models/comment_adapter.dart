@@ -15,6 +15,8 @@ class CommentAdapter extends TypeAdapter<Comment> {
       userId: reader.read(),
       userName: reader.read(),
       userPic: reader.read(),
+      photo: reader.read(),
+      isLocal: reader.readBool(),
     );
   }
 
@@ -27,5 +29,7 @@ class CommentAdapter extends TypeAdapter<Comment> {
     writer.write(obj.userId);
     writer.write(obj.userName);
     writer.write(obj.userPic);
+    writer.write(obj.photo);
+    writer.writeBool(obj.isLocal);
   }
 }

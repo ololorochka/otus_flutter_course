@@ -7,7 +7,9 @@ import 'package:flutter_network_connectivity/flutter_network_connectivity.dart';
 
 // Контроллер списка рецептов
 class RecipeListController {
-  static Future<List<Recipe>> loadRecipeList(Dio dio) async {
+  static Future<List<Recipe>> loadRecipeList() async {
+    final Dio dio = Dio();
+
     if (!await FlutterNetworkConnectivity().isInternetConnectionAvailable()) {
       return RecipeList().get();
     }

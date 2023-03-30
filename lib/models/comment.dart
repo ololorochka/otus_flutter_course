@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:hive/hive.dart';
+import 'package:otus_food/settings.dart';
 import 'package:otus_food/common.dart' as com;
 import 'package:otus_food/models/recipe.dart';
 
@@ -26,17 +28,24 @@ class Comment {
   @HiveField(6)
   String? userPic;
 
+  @HiveField(7)
+  String? photo;
+
+  @HiveField(8)
+  bool isLocal = false;
+
   static const String _defaultName = 'Гость';
 
-  Comment({
-    this.commentId,
-    required this.recipeId,
-    this.date,
-    required this.text,
-    this.userId,
-    this.userName = _defaultName,
-    this.userPic,
-  });
+  Comment(
+      {this.commentId,
+      required this.recipeId,
+      this.date,
+      required this.text,
+      this.userId,
+      this.userName = _defaultName,
+      this.userPic,
+      this.photo,
+      this.isLocal = false});
 
   Comment.fromMap(Map<String, dynamic> map)
       : commentId = map['comment_id'],
@@ -45,10 +54,22 @@ class Comment {
         text = map['text'],
         userId = map['user_id'],
         userName = map['user_name'],
-        userPic = map['user_pic'];
+        userPic = map['user_pic'],
+        photo = map['photo'],
+        isLocal = map['isLocal'] ?? false;
 
+  // т.к. у нас нет редактирования комментов, считаем, что коммент всегда новый
   void save() {
     date ??= com.getDateNow();
+
+    // Если коммент локальный (не из сети), сохраним фото в пользовательской директории
+    if (isLocal && photo != null) {
+      final File tmpFile = File(photo!);
+      final String newFilePath = '${Settings().imageDir}/${tmpFile.path.split('/').last}';
+      tmpFile.copy(newFilePath);
+      tmpFile.delete();
+      photo = newFilePath;
+    }
   }
 }
 

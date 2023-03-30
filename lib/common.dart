@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:otus_food/theme_data.dart';
 import 'package:intl/intl.dart' as intl;
 
 // получить дату в формате день-месяц-год
@@ -23,4 +25,12 @@ String getTimerTime(int seconds) {
   String secondsStr = (seconds % 3660 % 60).toString().padLeft(2, '0');
 
   return hours > 0 ? "$hoursStr:$minutesStr:$secondsStr" : "$minutesStr:$secondsStr";
+}
+
+void showMessage(BuildContext inContext, String message, {bool isError = false}) {
+  ScaffoldMessenger.of(inContext).showSnackBar(SnackBar(
+      backgroundColor:
+          isError ? Theme.of(inContext).colorScheme.notableColor : Theme.of(inContext).colorScheme.secondary,
+      duration: const Duration(seconds: 2),
+      content: Text(message)));
 }
